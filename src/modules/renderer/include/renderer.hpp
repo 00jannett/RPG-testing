@@ -1,5 +1,5 @@
-#ifndef RENDERER_RENDERER_H
-#define RENDERER_RENDERER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 class Window;
 
