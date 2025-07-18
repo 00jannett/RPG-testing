@@ -14,3 +14,5 @@ public:
     void drawFrame() override;
     void cleanup() override;
 };
+
+#endif // VULKAN_RENDERER_HPP
