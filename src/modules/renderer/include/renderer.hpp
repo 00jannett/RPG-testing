@@ -11,3 +11,5 @@ public:
     virtual void drawFrame() = 0;
     virtual void cleanup() = 0;
 };
+
+#endif // RENDERER_H
