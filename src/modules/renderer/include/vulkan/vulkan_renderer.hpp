@@ -1,7 +1,6 @@
 #ifndef VULKAN_RENDERER_HPP
 #define VULKAN_RENDERER_HPP
 
-//#include "core/include/window/window.hpp"
 #include <window.hpp>
 #include <vulkan/vulkan.h>
 #include <vector>
