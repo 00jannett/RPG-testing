@@ -1,15 +1,15 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef RENDERER_HPP
+#define RENDERER_HPP
 
 class Window;
 
-class Renderer {
+class IRenderer {
 public:
-    virtual ~Renderer() = default;
+    virtual ~IRenderer() = default;
 
     virtual void init(Window& window) = 0;
     virtual void drawFrame() = 0;
     virtual void cleanup() = 0;
 };
 
-#endif // RENDERER_H
+#endif // RENDERER_HPP

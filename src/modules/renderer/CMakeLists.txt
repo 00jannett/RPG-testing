@@ -1,4 +1,4 @@
-add_library(Renderer STATIC
+add_library(IRenderer STATIC
     src/renderer.cpp
     src/vulkan/vulkan_renderer.cpp
 
@@ -6,8 +6,8 @@ add_library(Renderer STATIC
     include/vulkan_renderer.hpp
 )
 
-target_compile_options(Renderer PRIVATE ${MY_COMMON_COMPILE_OPTIONS})
+target_compile_options(IRenderer PRIVATE ${MY_COMMON_COMPILE_OPTIONS})
 
-target_include_directories(Renderer PUBLIC
+target_include_directories(IRenderer PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )

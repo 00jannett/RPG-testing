@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <vector>
 #include "vulkan_renderer.hpp"
+#include "logs.hpp"
 
 VulkanRenderer::VulkanRenderer(const std::vector<std::string>& extensions)
 : m_Instance(extensions),
@@ -25,6 +26,8 @@ void VulkanRenderer::init(Window& window) {
     createFramebuffers();
     createCommandPool();
     createCommandBuffers();
+
+    LOG_INFO("VulkanRenderer initialized");
 }
 
 
@@ -73,4 +76,28 @@ void VulkanRenderer::cleanup() {
         vkDestroyCommandPool(m_Device.Get(), m_CommandPool, nullptr);
         m_CommandPool = VK_NULL_HANDLE;
     }
+
+    LOG_INFO("VulkanRenderer cleaned up successfully");
+}
+
+void VulkanRenderer::createInstance() {
+    VkApplicationInfo appInfo{};
+    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+    appInfo.pApplicationName = "RPG";
+    appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+    appInfo.pEngineName = "Engine";
+    appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+    appInfo.apiVersion = VK_API_VERSION_1_0;
+
+    VkInstanceCreateInfo createInfo{};
+    createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    createInfo.pApplicationInfo = &appInfo;
+
+    uint32_t glfwExtensionCount = 0;
+    const char** glfwExtensions;
+
+    glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+
+    createInfo.enabledExtensionCount = glfwExtensionCount;
+    createInfo.ppEnabledExtensionNames = glfwExtensions;
 }
